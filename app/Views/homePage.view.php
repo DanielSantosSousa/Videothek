@@ -10,7 +10,7 @@
     <h1>Videothek</h1>
 
 
-    <label for="rent">Video Ausleihen</label>
+    <a href="ausleihen">Video Ausleihen</a>
     
 </body>
 </html>

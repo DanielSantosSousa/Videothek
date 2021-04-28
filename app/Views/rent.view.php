@@ -9,20 +9,33 @@
 <body>
     <h1>Ausleih-Daten erfassen</h1>
 
+    <?php if (isset($errors)): ?>
+    <ul>
+    <?php 
+       foreach($errors as $error) {
+           echo '<li>' . $error . '</li>';
+       }
+    ?>
+    </ul>
+    <?php endif ?>
+​
+    <a href="/Videothek/">Home</a>
+
+    <form action="/Videothek/ausleihen/validate" method="post">
 
     <fieldset>
             <legend class="form-legend">Personendaten</legend> <br>
             <div class="form-group">
                 <label class="form-label" for="name">*Name:</label> <br>
-                <input class="form-control" type="text" id="name" name="name"> <br> <br>
+                <input class="form-control" type="text" id="name" name="name"  value="<?= $name ?? '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">*Email:</label> <br>
-                <input class="form-control" type="email" id="email" name="email"> <br> <br>
+                <input class="form-control" type="email" id="email" name="email" value="<?= $email ?? '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="phone">Telefon:</label> <br>
-                <input class="form-control" type="text" id="phone" name="phone"> <br> <br>
+                <input class="form-control" type="text" id="phone" name="phone" value="<?= $phone ?? '' ?>"> <br> <br>
             </div>
     </fieldset>
 ​
@@ -31,7 +44,7 @@
 
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
                 <select class="form-control" id="membership" name="membership">
-                    <option value="">keine</option>
+                    <option value="none">keine</option>
                     <option value="bronze">Bronze</option>
                     <option value="silver">Silber</option>
                     <option value="gold">Gold</option>
@@ -45,6 +58,10 @@
                     <option value="gold">Gold</option>
                 </select>
 
-        </fieldset>
+        </fieldset> <br>
+
+        <button type="submit" name="form-submit">Ausleihen</button>
+
+    </form>
 </body>
 </html>
