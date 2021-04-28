@@ -7,7 +7,7 @@
     <title>Videothek</title>
 </head>
 <body>
-    <h1>Willkommen auf der Videothek</h1>
+    <h1>Videothek</h1>
 
 
     <label for="rent">Video Ausleihen</label>

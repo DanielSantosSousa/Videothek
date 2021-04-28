@@ -4,7 +4,6 @@ require 'core/bootstrap.php';
 $routes = [
 	'/videothek/' => 'HomePageController@index',
 	'/videothek/ausleihen/' => 'RentController@rent',
-
 ];
 
 $db = [

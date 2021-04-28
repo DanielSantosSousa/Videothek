@@ -7,7 +7,7 @@
     <title>Rent a Video</title>
 </head>
 <body>
-    <h1>Ausleihdaten erfassen</h1>
+    <h1>Ausleih-Daten erfassen</h1>
 
 
     <fieldset>
