@@ -12,7 +12,7 @@
     <ul>
         <?php foreach($result as $loan) : ?>
             <li>
-                <?= e($loan['name']) . " | " . e($loan['fk_movieid']) . " | Zur&uumlck Erwartet am: " .  e(date_format($loan['expectedReturn'],"d-m-Y")) ?>
+                <?= e($loan['name']) . " | " . e($loan['fk_movieid']) . " | Zur&uumlck Erwartet am: " .  e(date_format($loan['expectedReturn'],"d-m-Y")) . (($loan['expectedReturn'] < $now) ? '😠' : '😁')?>
             </li>
         <?php endforeach; ?>
     </ul>

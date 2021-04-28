@@ -22,12 +22,12 @@ class loan
         $this->membership = $membership;
     }
 
-    public static function getAllOrderedByDate(){
+    public static function getNotReturnedOrderedByDate(){
         global $pdo;
         if(!isset($pdo)){
             $pdo = db();
         }
-        $statement = $pdo->prepare('SELECT * FROM loans ORDER BY date');
+        $statement = $pdo->prepare('SELECT * FROM loans WHERE returned = 0 ORDER BY date ');
         $statement->execute();
         $result = $statement->fetchAll();
 

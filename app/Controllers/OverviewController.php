@@ -2,7 +2,8 @@
 
 class OverviewController{
     public function view(){
-        $result = Loan::getAllOrderedByDate();
+        $now = new DateTime();
+        $result = Loan::getNotReturnedOrderedByDate();
         require 'app/Views/overview.view.php';
     }
 }
