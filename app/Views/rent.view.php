@@ -52,7 +52,7 @@
                 
             <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="video" name="video">
-                    <option value="">keine</option>
+                    <option value="none">keine</option>
                     <option value="bronze">Bronze</option>
                     <option value="silver">Silber</option>
                     <option value="gold">Gold</option>
