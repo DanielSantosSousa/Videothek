@@ -9,7 +9,7 @@
 <body>
     <h1>Ausgeliehene Videos</h1>
     <ul>
-        <?php foreach($editedResult as $i=>$loan) : ?>
+        <?php foreach($result as $loan) : ?>
             <li>
                 <?= e($loan['name']) . " | " . e($loan['fk_movieid']) . " | Zur&uumlck Erwartet am: " .  e(date_format($loan['expectedReturn'],"d-m-Y")) ?>
             </li>

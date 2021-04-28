@@ -44,20 +44,22 @@
 
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
                 <select class="form-control" id="membership" name="membership">
-                    <option value="none">keine</option>
-                    <option value="bronze">Bronze</option>
-                    <option value="silver">Silber</option>
-                    <option value="gold">Gold</option>
+                    <?php foreach($memberships as $membership) : ?>
+                        <option value="<?= $membership['title'] ?>">
+                            <?= $membership['title'] ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select> <br> <br>
                 
             <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="video" name="video">
-                    <option value="none">keine</option>
-                    <option value="bronze">Bronze</option>
-                    <option value="silver">Silber</option>
-                    <option value="gold">Gold</option>
+                    <?php foreach($videos as $video) : ?>
+                        <option value="<?= $video['title'] ?>">
+                            <?= $video['title'] ?>
+                        </option> 
+                    <?php endforeach; ?>
                 </select>
-
+                
         </fieldset> <br>
 
         <button type="submit" name="form-submit">Ausleihen</button>
