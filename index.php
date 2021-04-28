@@ -2,14 +2,9 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/videothek/' => 'HomePageController@index',
-	'/videothek/ausleihen/' => 'RentController@rent',
-];
-
-$db = [
-	'name'     => 'tasklist',
-	'username' => 'root',
-	'password' => '',
+	'/' => 'HomePageController@index',
+	'/ausleihen' => 'RentController@rent',
+	'/uebersicht' => 'OverviewController@view',
 ];
 
 $router = new Router($routes);
