@@ -17,6 +17,7 @@ class RentController {
             $phone        = $_POST['phone']    ?? '';
             $membership   = $_POST['membership']    ?? '';
             $video        = $_POST['video']    ?? '';
+            $date         = date("Y.m.d");
 
             $name         = trim($name);
             $email        = trim($email);
@@ -52,6 +53,10 @@ class RentController {
 
             if(count($errors) !== 0){
                 require 'app/Views/rent.view.php';
+            } elseif(count($errors) === 0) {
+                $loan = new Loan($name, $email, $phone, $membership, $video, $date);
+                $loan->create();
+                header('Location: /');
             }
 
 
@@ -75,9 +80,5 @@ class RentController {
         header('Location: /');
 
     }
-
-    
-
-    
 
 }

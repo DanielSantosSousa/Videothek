@@ -56,10 +56,10 @@
                     <?php foreach($videos as $video) : ?>
                         <option value="<?= $video['title'] ?>">
                             <?= $video['title'] ?>
-                        </option>
+                        </option> 
                     <?php endforeach; ?>
                 </select>
-
+                
         </fieldset> <br>
 
         <button type="submit" name="form-submit">Ausleihen</button>
