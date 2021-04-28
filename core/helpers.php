@@ -17,6 +17,11 @@ function post(string $key, $default = '')
     return $_POST[$key] ?? $default;
 }
 
+function dd($value) {
+    die(var_dump($value));
+}
+
+
 /**
  * Stellt eine Verbindung zur Datenbank her und gibt die
  * Datenbankverbindung als PDO zurück.

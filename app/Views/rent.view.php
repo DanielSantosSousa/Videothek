@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent a Video</title>
+    <title>Video Ausleihen</title>
 </head>
 <body>
     <h1>Ausleih-Daten erfassen</h1>
@@ -45,17 +45,17 @@
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
                 <select class="form-control" id="membership" name="membership">
                     <?php foreach($memberships as $membership) : ?>
-                        <option value="<?= $membership['title'] ?>">
+                        <option value="<?= $membership['id'] ?>">
                             <?= $membership['title'] ?>
                         </option>
                     <?php endforeach; ?>
                 </select> <br> <br>
                 
-            <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
-                <select class="form-control" id="video" name="video">
-                    <?php foreach($videos as $video) : ?>
-                        <option value="<?= $video['title'] ?>">
-                            <?= $video['title'] ?>
+            <label class="form-label" for="movie">*Ausgeleihtes Video:</label> <br>
+                <select class="form-control" id="movie" name="movie">
+                    <?php foreach($movies as $movie) : ?>
+                        <option value="<?= $movie['id'] ?>">
+                            <?= $movie['title'] ?>
                         </option> 
                     <?php endforeach; ?>
                 </select>

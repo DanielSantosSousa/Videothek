@@ -3,12 +3,15 @@
 class RentController {
 
     public function rent() {
-        $videos = Movie::getAllOrderedByTitle();
+        $movies = Movie::getAllOrderedByTitle();
         $memberships = MembershipStatus::getAll();
         require 'app/Views/rent.view.php';
     }
 
     public function validate() {
+        
+        $movies = Movie::getAllOrderedByTitle();
+        $memberships = MembershipStatus::getAll();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -16,14 +19,15 @@ class RentController {
             $email        = $_POST['email']    ?? '';
             $phone        = $_POST['phone']    ?? '';
             $membership   = $_POST['membership']    ?? '';
-            $video        = $_POST['video']    ?? '';
+            $movie        = $_POST['movie']    ?? '';
             $date         = date("Y.m.d");
 
             $name         = trim($name);
             $email        = trim($email);
             $phone        = trim($phone);
             $membership   = trim($membership);
-            $video        = trim($video);
+            $movie        = trim($movie);
+            $date         = trim($date);
 
             $errors = [];
 
@@ -43,20 +47,19 @@ class RentController {
                 }
             }
 
-            if($membership === ''){
+           if($membership === ''){
                 $errors[] = 'Bitte wählen Sie einen Mitgliedschaftsstatus aus';
             }
 
-            if($video === ''){
+            if($movie === ''){
                 $errors[] = 'Bitte wählen Sie ein Video aus';
             }
 
             if(count($errors) !== 0){
                 require 'app/Views/rent.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $phone, $membership, $video, $date);
+                $loan = new Loan($name, $email, $phone, $movie, $membership, $date);
                 $loan->create();
-                header('Location: /');
             }
 
 
@@ -64,20 +67,6 @@ class RentController {
             require 'app/Views/rent.view.php';
         }
 
-
-    }
-
-    public function new() {
-
-        $name = $_GET['name'];
-        $email = $_GET['email'];
-        $phone = $_GET['phone'];
-        $membership = $_GET['membership'];
-        $video = $_GET['video'];
-
-        $loan = new Loan($name, $email, $phone, $membership, $video);
-        $loan->create();
-        header('Location: /');
 
     }
 
