@@ -50,7 +50,7 @@
                     <option value="gold">Gold</option>
                 </select> <br> <br>
                 
-            <label class="form-label" for="membership">*Ausgeleihtes Video:</label> <br>
+            <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="video" name="video">
                     <option value="">keine</option>
                     <option value="bronze">Bronze</option>

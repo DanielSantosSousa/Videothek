@@ -8,7 +8,7 @@ $routes = [
 ];
 
 $db = [
-	'name'     => 'tasklist',
+	'name'     => 'videothek',
 	'username' => 'root',
 	'password' => '',
 ];

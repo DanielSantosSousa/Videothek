@@ -61,4 +61,23 @@ class RentController {
 
     }
 
+    public function new() {
+
+        $name = $_GET['name'];
+        $email = $_GET['email'];
+        $phone = $_GET['phone'];
+        $membership = $_GET['membership'];
+        $video = $_GET['video'];
+
+        $loan = new Loan($name, $email, $phone, $membership, $video);
+        $loan->create();
+        header('Location: /');
+
+
+    }
+
+    
+
+    
+
 }
