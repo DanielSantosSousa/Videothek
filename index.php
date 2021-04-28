@@ -2,7 +2,9 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/hallo/welt' => 'WelcomeController@index',
+	'/videothek/' => 'HomePageController@index',
+	'/videothek/ausleihen/' => 'RentController@rent',
+
 ];
 
 $db = [
