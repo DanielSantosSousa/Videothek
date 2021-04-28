@@ -21,4 +21,15 @@ class Movie
         $result = $statement->fetch();
         $this->title = $result['title'];
     }
+
+    public static function getAllOrderedByTitle(){
+        global $pdo;
+        if(!isset($pdo)){
+            $pdo = db();
+        }
+        $statement = $pdo->prepare('SELECT * FROM movies ORDER BY title');
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
 }

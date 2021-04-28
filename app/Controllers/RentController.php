@@ -3,7 +3,8 @@
 class RentController {
 
     public function rent() {
-
+        $videos = Movie::getAllOrderedByTitle();
+        $memberships = MembershipStatus::getAll();
         require 'app/Views/rent.view.php';
     }
 

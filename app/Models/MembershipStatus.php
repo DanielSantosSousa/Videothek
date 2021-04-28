@@ -24,4 +24,15 @@ class MembershipStatus
         $this->title = $result['title'];
         $this->extraDays = $result['extra_days'];
     }
+
+    public static function getAll(){
+        global $pdo;
+        if(!isset($pdo)){
+            $pdo = db();
+        }
+        $statement = $pdo->prepare('SELECT * FROM `membership-status`');
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
 }
