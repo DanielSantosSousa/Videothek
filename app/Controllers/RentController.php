@@ -9,6 +9,9 @@ class RentController {
     }
 
     public function validate() {
+        
+        $movies = Movie::getAllOrderedByTitle();
+        $memberships = MembershipStatus::getAll();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -24,7 +27,7 @@ class RentController {
             $phone        = trim($phone);
             $membership   = trim($membership);
             $movie        = trim($movie);
-
+            $date         = trim($date);
 
             $errors = [];
 

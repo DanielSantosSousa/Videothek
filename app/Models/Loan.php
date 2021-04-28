@@ -53,12 +53,13 @@ class loan
     }
 
     public function create() {
-        $statement = $this->pdo->prepare('INSERT INTO loans (name, email, telephone, fk_movieid, fk_membershipstatusid, date) VALUES (:name, :email, :phone, :movie, :membership, :date)');
+        $statement = $this->pdo->prepare('INSERT INTO loans (name, email, telephone, fk_movieid, fk_membershipstatusid, date) VALUES (:name, :email, :telephone, :movie, :membership, :date)');
+        //dd($this);
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
         $statement->bindParam(':telephone', $this->phone);
-        $statement->bindParam(':fk_movieid', $this->movie);
-        $statement->bindParam('fk_membershipstatusid', $this->membership);
+        $statement->bindParam(':movie', $this->movie);
+        $statement->bindParam(':membership', $this->membership);
         $statement->bindParam(':date', $this->date);
         $statement->execute();
     }
