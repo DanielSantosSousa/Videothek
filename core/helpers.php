@@ -17,6 +17,11 @@ function post(string $key, $default = '')
     return $_POST[$key] ?? $default;
 }
 
+function dd($value) {
+    die(var_dump($value));
+}
+
+
 /**
  * Stellt eine Verbindung zur Datenbank her und gibt die
  * Datenbankverbindung als PDO zurück.
@@ -32,9 +37,9 @@ function db(): PDO
     }
 
     $db = [
-        'name'     => 'kurseictbz_30711',
-        'username' => 'kurseictbz_30711',
-        'password' => 'db_307_pw_11',
+        'name'     => 'videothek',
+        'username' => 'root',
+        'password' => '',
     ];
 
     try {
