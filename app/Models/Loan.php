@@ -52,14 +52,30 @@ class loan
         return date_add(date_create($date), date_interval_create_from_date_string($membership->extraDays + 30 . ' days'));
     }
 
+    public function membershipTitleToId($membership) {
+        if($membership->title === 'keine'){
+            $membership->id = 1;
+        }
+        elseif($membership->title === 'Bronze'){
+            $membership->id = 2;
+        }
+        elseif($membership->title === 'Silber'){
+            $membership->id = 3;
+        }
+        elseif($membership->title === 'Gold'){
+            $membership->id = 4;
+        }
+        return $membership->id;        
+    }
+
     public function create() {
-        $statement = $this->pdo->prepare('INSERT INTO loans (name, email, telephone, date, fk_movieid, fk_membershipstastusid) VALUES (:name, :email, :phone, :fk_movieid, :fk_membershipid, :date)');
+        $statement = $this->pdo->prepare('INSERT INTO loans (name, email, telephone, date, fk_membershipstastusid) VALUES (:name, :email, :phone, :fk_membershipid, :date)');
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
         $statement->bindParam(':telephone', $this->phone);
         $statement->bindParam(':date', $this->date);
-        $statement->bindParam(':fk_movieid', $this->movie);
-        $statement->bindParam('fk_membershipid', $this->membership);
+        //$statement->bindParam(':fk_movieid', $this->movie;
+        $statement->bindParam('fk_membershipid', $this->membership::membershipTitleToId($membership));
         $statement->execute();
     }
 }

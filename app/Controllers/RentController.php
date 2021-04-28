@@ -73,9 +73,9 @@ class RentController {
         $email = $_GET['email'];
         $phone = $_GET['phone'];
         $membership = $_GET['membership'];
-        $video = $_GET['video'];
+        //$video = $_GET['video'];
 
-        $loan = new Loan($name, $email, $phone, $membership, $video);
+        $loan = new Loan($name, $email, $phone, $membership, $date);
         $loan->create();
         header('Location: /');
 
