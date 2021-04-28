@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Ausgeliehene Videos</h1>
+    <a href="/m307_2/01_videothek/">Home</a>
     <ul>
         <?php foreach($result as $loan) : ?>
             <li>

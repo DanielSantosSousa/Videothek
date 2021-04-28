@@ -32,9 +32,9 @@ function db(): PDO
     }
 
     $db = [
-        'name'     => 'videothek',
-        'username' => 'root',
-        'password' => '',
+        'name'     => 'kurseictbz_30711',
+        'username' => 'kurseictbz_30711',
+        'password' => 'db_307_pw_11',
     ];
 
     try {

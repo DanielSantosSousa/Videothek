@@ -74,7 +74,6 @@ class RentController {
         $loan->create();
         header('Location: /');
 
-
     }
 
     
