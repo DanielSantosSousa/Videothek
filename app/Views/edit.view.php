@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/m307_2/01_videothek/public/css/edit.css">
     <title>Edit a loan</title>
 </head>
 <body>
+
     <h1>Ausleih-Daten bearbeiten</h1>
 
     <?php if (isset($errors)): ?>
@@ -28,11 +30,11 @@
             <legend class="form-legend">Personendaten</legend> <br>
             <div class="form-group">
                 <label class="form-label" for="name">*Name:</label> <br>
-                <input class="form-control" type="text" id="name" name="name"  value="<?= e($name) ?? '' ?>"> <br> <br>
+                <input type="text" id="name" name="name"  value="<?= e($name) ?? '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">*Email:</label> <br>
-                <input class="form-control" type="email" id="email" name="email" value="<?= e($email) ?? '' ?>"> <br> <br>
+                <input type="email" id="email" name="email" value="<?= e($email) ?? '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="telephone">Telefon:</label> <br>
@@ -59,6 +61,7 @@
                     <?php endforeach; ?>
                 </select><br><br>
 
+            
             <label class="form-label" for="video">Video Zur&uumlckgebracht:</label> <br>
             <select class="form-control" id="returned" name="returned">
                 <option <?= (!$returned ? 'selected' : '') ?> value="0"> Nein </option>
@@ -67,7 +70,7 @@
                 
         </fieldset> <br>
 
-        <button type="submit" name="form-submit">Speichern</button>
+        <input class="submit" type="submit" name="form-submit" value="Speichern"></input>
 
     </form>
 </body>

@@ -19,14 +19,14 @@ class RentController {
             $email        = $_POST['email']    ?? '';
             $telephone    = $_POST['telephone']    ?? '';
             $selectedMembership   = $_POST['membership']    ?? '';
-            $movie        = $_POST['movie']    ?? '';
+            $selectedMovie        = $_POST['movie']    ?? '';
             $date         = date("Y.m.d");
 
             $name         = trim($name);
             $email        = trim($email);
             $telephone    = trim($telephone);
             $selectedMembership   = trim($selectedMembership);
-            $movie        = trim($movie);
+            $selectedMovie        = trim($selectedMovie);
             $date         = trim($date);
 
             $errors = [];
@@ -52,15 +52,16 @@ class RentController {
                 $errors[] = 'Bitte wählen Sie einen Mitgliedschaftsstatus aus';
             }
 
-            if($movie === ''){
+            if($selectedMovie === ''){
                 $errors[] = 'Bitte wählen Sie ein Video aus';
             }
 
             if(count($errors) !== 0){
                 require 'app/Views/rent.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $telephone, $movie, $selectedMembership, $date);
+                $loan = new Loan($name, $email, $telephone, $selectedMovie, $selectedMembership, $date);
                 $loan->create();
+                header('Location: /m307_2/01_videothek/');
             }
 
 

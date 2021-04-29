@@ -1,0 +1,10 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font: 20px/1.5 'Arial', sans-serif;
+    max-width: 1000px;
+    margin: 6em auto;
+    text-align: left;
+}

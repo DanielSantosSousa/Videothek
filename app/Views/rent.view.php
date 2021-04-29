@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/m307_2/01_videothek/public/css/rent.css">
     <title>Video Ausleihen</title>
 </head>
 <body>
+
     <h1>Ausleih-Daten erfassen</h1>
 
     <?php if (isset($errors)): ?>
@@ -27,15 +29,15 @@
             <legend class="form-legend">Personendaten</legend> <br>
             <div class="form-group">
                 <label class="form-label" for="name">*Name:</label> <br>
-                <input class="form-control" type="text" id="name" name="name"  value="<?= isset($name) ? e($name) : '' ?>"> <br> <br>
+                <input type="text" id="name" name="name"  value="<?= isset($name) ? e($name) : '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">*Email:</label> <br>
-                <input class="form-control" type="email" id="email" name="email" value="<?= isset($email) ? e($email) : '' ?>"> <br> <br>
+                <input type="email" id="email" name="email" value="<?= isset($email) ? e($email) : '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="telephone">Telefon:</label> <br>
-                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= isset($telephone) ? e($telephone) : '' ?>"> <br> <br>
+                <input type="text" id="telephone" name="telephone" value="<?= isset($telephone) ? e($telephone) : '' ?>"> <br> <br>
             </div>
     </fieldset>
 ​
@@ -54,15 +56,20 @@
             <label class="form-label" for="movie">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="movie" name="movie">
                     <?php foreach($movies as $movie) : ?>
-                        <option value="<?= e($movie['id']) ?>">
+                        <option <?= isset($selectedMovie) ? ($selectedMovie === $movie['id'] ? 'selected' : '') : '' ?> value="<?= e($movie['id'])?>">
                             <?= e($movie['title']) ?>
-                        </option> 
+                        </option>
                     <?php endforeach; ?>
                 </select>
         </fieldset> <br>
+        
+
         <label class="form-label" for="expectedDate">Zurückerwartet bis am:</label> <br>
-        <input disabled type="text" id="expectedDate" name="expectedDate" value="" val><br><br>
-        <button type="submit" name="form-submit">Ausleihen</button>
+        <input disabled class="returnUntil" type="text" id="expectedDate" name="expectedDate" value="" val><br><br>
+
+
+        <input class="submit" type="submit" name="form-submit" value="Auslehnen"></input>
+
         <script src="/m307_2/01_videothek/public/js/rent.js" type="text/javascript"></script>
     </form>
 </body>
