@@ -15,45 +15,18 @@ class RentController {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $name         = $_POST['name']     ?? '';
-            $email        = $_POST['email']    ?? '';
-            $telephone    = $_POST['telephone']    ?? '';
+            $date                 = date("Y.m.d");
             $selectedMembership   = $_POST['membership']    ?? '';
-            $movie        = $_POST['movie']    ?? '';
-            $date         = date("Y.m.d");
+            $name                 = $_POST['name']     ?? '';
+            $email                = $_POST['email']    ?? '';
+            $telephone            = $_POST['telephone']    ?? '';
+            $movie                = $_POST['movie']    ?? '';
+            $errors               = validateInput($name,$email,$telephone,$movie);
 
-            $name         = trim($name);
-            $email        = trim($email);
-            $telephone    = trim($telephone);
+            $date                 = trim($date);
             $selectedMembership   = trim($selectedMembership);
-            $movie        = trim($movie);
-            $date         = trim($date);
-
-            $errors = [];
-
-            if($name === ''){
-                $errors[] = 'Bitte geben Sie einen Namen an';
-            }
-
-            if($email === ''){
-                $errors[] = 'Bitte geben Sie eine Email an.';
-            } elseif (preg_match("/[^@]+@[^.]+\..+$/", $email) == false) {
-                $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
-            }
-
-            if ($telephone !== '') {
-                if(! preg_match("/^[0-9\-\(\)\/\+\s]+$/", $telephone)){
-                    $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
-                }
-            }
-
-
-           if($selectedMembership === ''){
+            if($selectedMembership === ''){
                 $errors[] = 'Bitte wählen Sie einen Mitgliedschaftsstatus aus';
-            }
-
-            if($movie === ''){
-                $errors[] = 'Bitte wählen Sie ein Video aus';
             }
 
             if(count($errors) !== 0){

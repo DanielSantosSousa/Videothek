@@ -69,6 +69,7 @@
 
         <button type="submit" name="form-submit">Speichern</button>
     </form>
+    <script src="/m307_2/01_videothek/public/js/sharedMethods.js" type="text/javascript"></script>
     <script src="/m307_2/01_videothek/public/js/edit.js" type="text/javascript"></script>
 </body>
 </html>

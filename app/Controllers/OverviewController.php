@@ -32,34 +32,10 @@ class OverviewController{
             $returned     = $_POST['returned']    ?? '';
             $id           = $_POST['id']    ?? '';
 
-            $name         = trim($name);
-            $email        = trim($email);
-            $telephone        = trim($telephone);
-            $movie        = trim($movie);
             $returned     = trim($returned);
             $id           = trim($id);
 
-            $errors = [];
-
-            if($name === ''){
-                $errors[] = 'Bitte geben Sie einen Namen an';
-            }
-
-            if($email === ''){
-                $errors[] = 'Bitte geben Sie eine Email an.';
-            } elseif (preg_match("/[^@]+@[^.]+\..+$/", $email) == false) {
-                $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
-            }
-
-            if ($telephone !== '') {
-                if(! preg_match("/^[0-9\-\(\)\/\+\s]+$/", $telephone)){
-                    $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
-                }
-            }
-
-            if($movie === ''){
-                $errors[] = 'Bitte wählen Sie ein Video aus';
-            }
+            $errors = validateInput($name, $email, $telephone, $movie);
 
             if(!($returned == '0' || $returned == '1')){
                 $errors[] = 'Bitte auswählen ob video zurückgebracht wurde';

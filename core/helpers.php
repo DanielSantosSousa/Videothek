@@ -51,3 +51,35 @@ function db(): PDO
         die('Keine Verbindung zur Datenbank möglich: ' . $e->getMessage());
     }
 }
+
+function validateInput($name, $email, $telephone, $movie){
+
+    $name         = trim($name);
+    $email        = trim($email);
+    $telephone    = trim($telephone);
+    $movie        = trim($movie);
+
+    $errors = [];
+
+    if($name === ''){
+        $errors[] = 'Bitte geben Sie einen Namen an';
+    }
+
+    if($email === ''){
+        $errors[] = 'Bitte geben Sie eine Email an.';
+    } elseif (preg_match("/[^@]+@[^.]+\..+$/", $email) == false) {
+        $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
+    }
+
+    if ($telephone !== '') {
+        if(! preg_match("/^[0-9\-\(\)\/\+\s]+$/", $telephone)){
+            $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
+        }
+    }
+
+    if($movie === ''){
+        $errors[] = 'Bitte wählen Sie ein Video aus';
+    }
+
+    return $errors;
+}

@@ -31,39 +31,12 @@ window.addEventListener("load", function(){
         let telephone  = document.querySelector('#telephone').value;
         let membership = document.querySelector('#membership').value
         let movie      = document.querySelector('#movie').value;
-        const date       = new Date();
 
-        name = name.trim();
-        email = email.trim();
-        telephone = telephone.trim();
         membership = membership.trim();
-        movie = movie.trim();
 
-        const errors = []
-
-        if(name === ''){
-            errors.push('Bitte geben Sie einen Namen an');
-        }
-
-        if(email === ''){
-            errors.push('Bitte geben Sie eine Email an');
-        } else if (/[^@]+@[^.]+\..+$/.test(email) == false) {
-            errors.push('Bitte geben Sie eine gültige Email-Adress ein');
-        }
-
-        if (telephone !== '') {
-            if(/^[0-9\-\(\)\/\+\s]+$/.test(telephone) == false){
-                errors.push( 'Bitte geben Sie eine gültige Telefonnummer ein');
-            }
-        }
-
-
-        if(membership === ''){
+        const errors = validateInput(name, email, telephone, movie);
+        if(membership !== "1" && membership !== "2" && membership !== "3" && membership !== "4"){
             errors.push('Bitte wählen Sie einen Mitgliedschaftsstatus aus');
-        }
-
-        if(movie === ''){
-            errors.push('Bitte wählen Sie ein Video aus');
         }
 
         if(errors.length !== 0){
