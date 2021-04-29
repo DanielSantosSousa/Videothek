@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/m307_2/01_videothek/public/css/edit.css">
-    <title>Edit a loan</title>
+    <title>Ausleihung bearbeiten</title>
+
 </head>
 <body>
 
@@ -23,10 +24,10 @@
 
     <a href="/m307_2/01_videothek/">Home</a>
 
-    <form action="/m307_2/01_videothek/uebersicht/bearbeiten/validate" method="post">
+    <form id="formular" action="/m307_2/01_videothek/uebersicht/bearbeiten/validate" method="post">
 
     <fieldset>
-            <input hidden name="id" type="text" value="<?= $id ?>">
+            <input hidden name="id" type="text" value="<?= e($id) ?>">
             <legend class="form-legend">Personendaten</legend> <br>
             <div class="form-group">
                 <label class="form-label" for="name">*Name:</label> <br>
@@ -44,9 +45,9 @@
 
     <fieldset>
             <legend class="form-legend">Ausleihdaten</legend> <br>
-
+            <input type="text" hidden value="<?= e($membership) ?>" name="membership">
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
-                <select disabled class="form-control" id="membership" name="membership">
+                <select disabled class="form-control" id="membership">
                         <option value="<?= e($membership) ?>">
                             <?= e($membership) ?>
                         </option>
@@ -55,8 +56,8 @@
             <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="movie" name="movie">
                     <?php foreach($movies as $aMovie) : ?>
-                        <option <?= (($movie === $aMovie['title'] || $movie === $aMovie['id']) ? 'selected' : '') ?> value="<?= $aMovie['id'] ?>">
-                            <?= $aMovie['title'] ?>
+                        <option <?= (($movie === $aMovie['title'] || $movie === $aMovie['id']) ? 'selected' : '') ?> value="<?= e($aMovie['id']) ?>">
+                            <?= e($aMovie['title']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select><br><br>
@@ -73,5 +74,7 @@
         <input class="submit" type="submit" name="form-submit" value="Speichern"></input>
 
     </form>
+    <script src="/m307_2/01_videothek/public/js/sharedMethods.js" type="text/javascript"></script>
+    <script src="/m307_2/01_videothek/public/js/edit.js" type="text/javascript"></script>
 </body>
 </html>

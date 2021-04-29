@@ -8,6 +8,7 @@ $routes = [
 	'/uebersicht' => 'OverviewController@view',
     '/uebersicht/bearbeiten' => 'OverviewController@edit',
     '/uebersicht/bearbeiten/validate' => 'OverviewController@validate',
+    '/uebersicht/statusaendern' => 'OverviewController@statuschange',
 ];
 
 

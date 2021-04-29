@@ -97,4 +97,14 @@ class loan
         $statement->bindParam(':id', $id);
         $statement->execute();
     }
+
+    public static function updateStatusToReturned($id) {
+        global $pdo;
+        if(!isset($pdo)){
+            $pdo = db();
+        }
+        $statement = $pdo->prepare('UPDATE loans SET `returned` = 1 WHERE `id` = :id');
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+    }
 }

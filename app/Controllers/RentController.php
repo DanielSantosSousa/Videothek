@@ -15,56 +15,35 @@ class RentController {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $name         = $_POST['name']     ?? '';
-            $email        = $_POST['email']    ?? '';
-            $telephone    = $_POST['telephone']    ?? '';
+            $date                 = date("Y.m.d");
             $selectedMembership   = $_POST['membership']    ?? '';
+
             $selectedMovie        = $_POST['movie']    ?? '';
             $date         = date("Y.m.d");
+            $name                 = $_POST['name']     ?? '';
+            $email                = $_POST['email']    ?? '';
+            $telephone            = $_POST['telephone']    ?? '';
+            $errors               = validateInput($name,$email,$telephone,$movie);
 
-            $name         = trim($name);
-            $email        = trim($email);
-            $telephone    = trim($telephone);
-            $selectedMembership   = trim($selectedMembership);
-            $selectedMovie        = trim($selectedMovie);
-            $date         = trim($date);
+            $selectedMembership = trim($selectedMembership);
 
-            $errors = [];
-
-            if($name === ''){
-                $errors[] = 'Bitte geben Sie einen Namen an';
-            }
-
-            if($email === ''){
-                $errors[] = 'Bitte geben Sie eine Email an.';
-            } elseif (preg_match("/[^@]+@[^.]+\..+$/i", $email) == false) {
-                $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
-            }
-
-            if ($telephone !== '') {
-                if(! preg_match("/^[0-9\-\(\)\/\+\s]+$/", $telephone)){
-                    $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
-                }
-            }
-
-
-           if($selectedMembership === ''){
+            if($selectedMembership === ''){
                 $errors[] = 'Bitte wählen Sie einen Mitgliedschaftsstatus aus';
-            }
-
-            if($selectedMovie === ''){
-                $errors[] = 'Bitte wählen Sie ein Video aus';
             }
 
             if(count($errors) !== 0){
                 require 'app/Views/rent.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $telephone, $selectedMovie, $selectedMembership, $date);
-                $loan->create();
-                header('Location: /m307_2/01_videothek/');
+                try {
+                    $loan = new Loan($name, $email, $telephone, $selectedMovie, $selectedMembership, $date);
+                    $loan->create();
+                } catch (PDOException $e){
+                    $errors[] = "Fehler beim speichern in die Datenbank, versuchen sie es erneut";
+                    $movies = Movie::getAllOrderedByTitle();
+                    $membership = $_POST['membership'] ?? '';
+                    require 'app/Views/edit.view.php';
+                }
             }
-
-
         } else{
             require 'app/Views/rent.view.php';
         }
