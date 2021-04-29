@@ -27,15 +27,15 @@ class OverviewController{
 
             $name         = $_POST['name']     ?? '';
             $email        = $_POST['email']    ?? '';
-            $phone        = $_POST['phone']    ?? '';
-            $video        = $_POST['video']    ?? '';
+            $telephone        = $_POST['telephone']    ?? '';
+            $movie        = $_POST['movie']    ?? '';
             $returned     = $_POST['returned']    ?? '';
             $id           = $_POST['id']    ?? '';
 
             $name         = trim($name);
             $email        = trim($email);
-            $phone        = trim($phone);
-            $video        = trim($video);
+            $telephone        = trim($telephone);
+            $movie        = trim($movie);
             $returned     = trim($returned);
             $id           = trim($id);
 
@@ -51,13 +51,13 @@ class OverviewController{
                 $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
             }
 
-            if ($phone !== '') {
-                if(! preg_match('/^[\+ 0-9]+$/', $phone)){
+            if ($telephone !== '') {
+                if(! preg_match("/^[0-9\-\(\)\/\+\s]+$/", $telephone)){
                     $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
                 }
             }
 
-            if($video === ''){
+            if($movie === ''){
                 $errors[] = 'Bitte wählen Sie ein Video aus';
             }
 
@@ -70,7 +70,7 @@ class OverviewController{
                 $membership   = $_POST['membership'] ?? '';
                 require 'app/Views/edit.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $phone, $video, '' , '', $returned);
+                $loan = new Loan($name, $email, $telephone, $movie, '' , '', $returned);
                 $loan->update($id);
                 header('Location: /m307_2/01_videothek/uebersicht');
             }

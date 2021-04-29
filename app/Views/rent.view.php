@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label class="form-label" for="telephone">Telefon:</label> <br>
-                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= $phone ?? '' ?>"> <br> <br>
+                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= $telephone ?? '' ?>"> <br> <br>
             </div>
     </fieldset>
 ​

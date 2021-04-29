@@ -42,10 +42,11 @@ class RentController {
             }
 
             if ($telephone !== '') {
-                if(! preg_match('/^[\+ 0-9]+$/', $telephone)){
+                if(! preg_match("/^[0-9\-\(\)\/\+\s]+$/", $telephone)){
                     $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
                 }
             }
+
 
            if($membership === ''){
                 $errors[] = 'Bitte wählen Sie einen Mitgliedschaftsstatus aus';
