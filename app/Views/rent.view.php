@@ -21,7 +21,7 @@
 ​
     <a href="/m307_2/01_videothek/">Home</a>
 
-    <form action="/m307_2/01_videothek/ausleihen/validate" method="post">
+    <form id="formular" action="/m307_2/01_videothek/ausleihen/validate" method="post">
 
     <fieldset>
             <legend class="form-legend">Personendaten</legend> <br>

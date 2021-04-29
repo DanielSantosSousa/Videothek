@@ -21,7 +21,7 @@
 
     <a href="/m307_2/01_videothek/">Home</a>
 
-    <form action="/m307_2/01_videothek/uebersicht/bearbeiten/validate" method="post">
+    <form id="formular" action="/m307_2/01_videothek/uebersicht/bearbeiten/validate" method="post">
 
     <fieldset>
             <input hidden name="id" type="text" value="<?= $id ?>">
@@ -42,9 +42,9 @@
 
     <fieldset>
             <legend class="form-legend">Ausleihdaten</legend> <br>
-
+            <input type="text" hidden value="<?= e($membership) ?>" name="membership">
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
-                <select disabled class="form-control" id="membership" name="membership">
+                <select disabled class="form-control" id="membership">
                         <option value="<?= e($membership) ?>">
                             <?= e($membership) ?>
                         </option>
@@ -68,7 +68,7 @@
         </fieldset> <br>
 
         <button type="submit" name="form-submit">Speichern</button>
-
     </form>
+    <script src="/m307_2/01_videothek/public/js/edit.js" type="text/javascript"></script>
 </body>
 </html>

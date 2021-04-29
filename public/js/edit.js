@@ -1,42 +1,16 @@
-
-function calcExpectedDate(){
-    const membership = document.querySelector('#membership').value;
-    const defaultLoanDays = 30;
-    let extraDays = 0;
-    switch (membership){
-        case "1":
-            extraDays = 0;
-            break;
-        case "2":
-            extraDays = 10;
-            break;
-        case "3":
-            extraDays = 20;
-            break;
-        case "4":
-            extraDays = 40;
-            break;
-    }
-    const loanDuration = defaultLoanDays + extraDays;
-    const returnDay = new Date();
-    returnDay.setDate(returnDay.getDate() + loanDuration);
-    document.querySelector('#expectedDate').value = returnDay.toDateString();
-}
-
 window.addEventListener("load", function(){
-    calcExpectedDate();
     document.querySelector('#formular').addEventListener('submit', function(evt) {
         let name       = document.querySelector('#name').value;
         let email      = document.querySelector('#email').value;
         let telephone  = document.querySelector('#telephone').value;
-        let membership = document.querySelector('#membership').value
+        let returned = document.querySelector('#returned').value
         let movie      = document.querySelector('#movie').value;
         const date       = new Date();
 
         name = name.trim();
         email = email.trim();
         telephone = telephone.trim();
-        membership = membership.trim();
+        returned = returned.trim();
         movie = movie.trim();
 
         const errors = []
@@ -58,8 +32,9 @@ window.addEventListener("load", function(){
         }
 
 
-        if(membership === ''){
-            errors.push('Bitte wählen Sie einen Mitgliedschaftsstatus aus');
+        if(returned !== "0" && returned !== "1"){
+            console.log(returned)
+            errors.push('Bitte wählen Sie ob das Video zurück gebracht wurde');
         }
 
         if(movie === ''){

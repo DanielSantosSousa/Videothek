@@ -47,7 +47,7 @@ class OverviewController{
 
             if($email === ''){
                 $errors[] = 'Bitte geben Sie eine Email an.';
-            } elseif (preg_match("/[^@]+@[^.]+\..+$/i", $email) == false) {
+            } elseif (preg_match("/[^@]+@[^.]+\..+$/", $email) == false) {
                 $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
             }
 
@@ -70,11 +70,17 @@ class OverviewController{
                 $membership   = $_POST['membership'] ?? '';
                 require 'app/Views/edit.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $telephone, $movie, '' , '', $returned);
-                $loan->update($id);
+                try {
+                    $loan = new Loan($name, $email, $telephone, $movie, '', '', $returned);
+                    $loan->update($id);
+                }  catch (PDOException $e){
+                    $errors[] = "Fehler beim speichern in die Datenbank, versuchen sie es erneut";
+                    $movies = Movie::getAllOrderedByTitle();
+                    $membership = $_POST['membership'] ?? '';
+                    require 'app/Views/edit.view.php';
+                }
                 header('Location: /m307_2/01_videothek/uebersicht');
             }
-
         } else {
             require 'app/Views/overview.view.php';
         }
