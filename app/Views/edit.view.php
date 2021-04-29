@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit a loan</title>
+    <title>Ausleihung bearbeiten</title>
 </head>
 <body>
     <h1>Ausleih-Daten bearbeiten</h1>
@@ -24,7 +24,7 @@
     <form id="formular" action="/m307_2/01_videothek/uebersicht/bearbeiten/validate" method="post">
 
     <fieldset>
-            <input hidden name="id" type="text" value="<?= $id ?>">
+            <input hidden name="id" type="text" value="<?= e($id) ?>">
             <legend class="form-legend">Personendaten</legend> <br>
             <div class="form-group">
                 <label class="form-label" for="name">*Name:</label> <br>
@@ -53,8 +53,8 @@
             <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="movie" name="movie">
                     <?php foreach($movies as $aMovie) : ?>
-                        <option <?= (($movie === $aMovie['title'] || $movie === $aMovie['id']) ? 'selected' : '') ?> value="<?= $aMovie['id'] ?>">
-                            <?= $aMovie['title'] ?>
+                        <option <?= (($movie === $aMovie['title'] || $movie === $aMovie['id']) ? 'selected' : '') ?> value="<?= e($aMovie['id']) ?>">
+                            <?= e($aMovie['title']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select><br><br>
