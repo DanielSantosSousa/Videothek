@@ -14,9 +14,9 @@ class OverviewController{
         $returned = $loan->returned;
         $name = $loan->name;
         $email = $loan->email;
-        $phone = $loan->phone ?? '';
+        $telephone = $loan->phone ?? '';
         $membership = $loan->membership;
-        $video = $loan->movie;
+        $movie = $loan->movie;
         $movies = Movie::getAllOrderedByTitle();
         require 'app/Views/edit.view.php';
     }
@@ -27,14 +27,14 @@ class OverviewController{
 
             $name         = $_POST['name']     ?? '';
             $email        = $_POST['email']    ?? '';
-            $telephone        = $_POST['telephone']    ?? '';
+            $telephone    = $_POST['telephone']    ?? '';
             $movie        = $_POST['movie']    ?? '';
             $returned     = $_POST['returned']    ?? '';
             $id           = $_POST['id']    ?? '';
 
             $name         = trim($name);
             $email        = trim($email);
-            $telephone        = trim($telephone);
+            $telephone    = trim($telephone);
             $movie        = trim($movie);
             $returned     = trim($returned);
             $id           = trim($id);
