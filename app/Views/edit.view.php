@@ -43,10 +43,9 @@
     <fieldset>
             <legend class="form-legend">Ausleihdaten</legend> <br>
 
-            <input hidden name="membership" type="text" value="<?= e($membership) ?>">
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
-                <select disabled class="form-control" id="membership">
-                        <option selected value="<?= e($membership) ?>">
+                <select disabled class="form-control" id="membership" name="membership">
+                        <option value="<?= e($membership) ?>">
                             <?= e($membership) ?>
                         </option>
                 </select> <br> <br>
