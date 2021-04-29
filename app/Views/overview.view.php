@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/overwiew.css">
+    <link rel="stylesheet" href="/m307_2/01_videothek/public/css/overview.css">
     <title>Ausgeliehene Videos</title>
 </head>
 <body>

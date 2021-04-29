@@ -66,8 +66,8 @@
 
         <label class="form-label" for="expectedDate">Zurückerwartet bis am:</label> <br>
 
-        <input disabled type="text" id="expectedDate" name="expectedDate" value="" val><br><br>
-        <button type="submit" name="form-submit">Ausleihen</button>
+        <input class="returnUntil" disabled type="text" id="expectedDate" name="expectedDate" value="" val><br><br>
+        <input class="submit" type="submit" name="form-submit" value="Ausleihen"></input>
         <script src="/m307_2/01_videothek/public/js/sharedMethods.js" type="text/javascript"></script>
         <script src="/m307_2/01_videothek/public/js/rent.js" type="text/javascript"></script>
     </form>
