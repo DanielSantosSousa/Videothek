@@ -17,14 +17,14 @@ class RentController {
 
             $name         = $_POST['name']     ?? '';
             $email        = $_POST['email']    ?? '';
-            $telephone        = $_POST['telephone']    ?? '';
+            $telephone    = $_POST['telephone']    ?? '';
             $membership   = $_POST['membership']    ?? '';
             $movie        = $_POST['movie']    ?? '';
             $date         = date("Y.m.d");
 
             $name         = trim($name);
             $email        = trim($email);
-            $telephone        = trim($telephone);
+            $telephone    = trim($telephone);
             $membership   = trim($membership);
             $movie        = trim($movie);
             $date         = trim($date);
