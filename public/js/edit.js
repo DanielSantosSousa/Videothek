@@ -21,12 +21,12 @@ window.addEventListener("load", function(){
 
         if(email === ''){
             errors.push('Bitte geben Sie eine Email an');
-        } else if (/[^@]+@[^.]+\..+$/.test(email) == false) {
-            errors.push('Bitte geben Sie eine gültige Email-Adress ein');
+        } else if (/[^@]+@[^.]+\..+$/.test(email) === false) {
+            errors.push('Bitte geben Sie eine gültige Email-Adresse ein');
         }
 
         if (telephone !== '') {
-            if(/^[0-9\-\(\)\/\+\s]+$/.test(telephone) == false){
+            if(/^[0-9\-\(\)\/\+\s]+$/.test(telephone) === false){
                 errors.push( 'Bitte geben Sie eine gültige Telefonnummer ein');
             }
         }
