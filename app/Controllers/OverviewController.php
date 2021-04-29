@@ -70,7 +70,7 @@ class OverviewController{
                 $membership   = $_POST['membership'] ?? '';
                 require 'app/Views/edit.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $telephone, $video, '' , '', $returned);
+                $loan = new Loan($name, $email, $telephone, $movie, '' , '', $returned);
                 $loan->update($id);
                 header('Location: /m307_2/01_videothek/uebersicht');
             }
