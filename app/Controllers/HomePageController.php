@@ -2,9 +2,7 @@
 
 class HomePageController
 {
-	public function index()
-	{
-		
+	public function index() {
 		require 'app/Views/homePage.view.php';
 	}
 }
