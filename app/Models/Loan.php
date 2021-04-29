@@ -5,20 +5,20 @@ class loan
 	public $id;
 	public $name;
 	public $email;
-	public $phone;
+	public $telephone;
 	public $date;
 	public $movie;
 	public $membership;
 	public $returned;
     public $pdo;
 
-    public function __construct($name = null, $email = null, $phone = null, $movie = null, $membership = null, $date = null, $returned = false)
+    public function __construct($name = null, $email = null, $telephone = null, $movie = null, $membership = null, $date = null, $returned = false)
     {
         $this->pdo = db();
         $this->name = $name;
         $this->email = $email;
-        $this->phone = $phone;
         $this->date = $date;
+        $this->telephone = $telephone;
         $this->movie = $movie;
         $this->membership = $membership;
         $this->returned = $returned;
@@ -80,7 +80,7 @@ class loan
         $statement = $this->pdo->prepare('INSERT INTO loans (name, email, telephone, fk_movieid, fk_membershipstatusid, date) VALUES (:name, :email, :telephone, :movie, :membership, :date)');
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
-        $statement->bindParam(':telephone', $this->phone);
+        $statement->bindParam(':telephone', $this->telephone);
         $statement->bindParam(':movie', $this->movie);
         $statement->bindParam(':membership', $this->membership);
         $statement->bindParam(':date', $this->date);
@@ -91,7 +91,7 @@ class loan
         $statement = $this->pdo->prepare('UPDATE loans SET `name` = :name, `email` = :email, `telephone` = :telephone, `fk_movieid` = :movie, `returned` = :returned WHERE `id` = :id');
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
-        $statement->bindParam(':telephone', $this->phone);
+        $statement->bindParam(':telephone', $this->telephone);
         $statement->bindParam(':movie', $this->movie);
         $statement->bindParam(':returned', $this->returned);
         $statement->bindParam(':id', $id);

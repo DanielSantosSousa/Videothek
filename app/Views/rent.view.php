@@ -34,8 +34,8 @@
                 <input class="form-control" type="email" id="email" name="email" value="<?= $email ?? '' ?>"> <br> <br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="phone">Telefon:</label> <br>
-                <input class="form-control" type="text" id="phone" name="phone" value="<?= $phone ?? '' ?>"> <br> <br>
+                <label class="form-label" for="telephone">Telefon:</label> <br>
+                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= $phone ?? '' ?>"> <br> <br>
             </div>
     </fieldset>
 ​
