@@ -84,6 +84,25 @@ class OverviewController{
         } else {
             require 'app/Views/overview.view.php';
         }
+    }
 
+    public function statuschange(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $loans         = $_POST['loans'] ?? '  ';
+            $errors = [];
+            if( $loans === '  '){
+                $errors[] = "Bitte ausgeliehene Videos vor Status Änderung auswählen";
+                $now = new DateTime();
+                $result = Loan::getNotReturnedOrderedByDate();
+                require('app/Views/overview.view.php');
+            } else {
+                foreach ($loans as $loan) {
+                    Loan::updateStatusToReturned($loan);
+                }
+                header('Location: /m307_2/01_videothek/uebersicht');
+            }
+        } else {
+            header('Location: /m307_2/01_videothek/uebersicht');
+        }
     }
 }

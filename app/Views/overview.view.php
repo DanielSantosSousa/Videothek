@@ -8,14 +8,24 @@
 </head>
 <body>
     <h1>Ausgeliehene Videos</h1>
-    <a href="/m307_2/01_videothek/">Home</a>
-    <ul>
+    <a href="/m307_2/01_videothek/">Home</a><br><br>
+    <?php if (isset($errors)): ?>
+        <ul>
+            <?php
+            foreach($errors as $error) {
+                echo '<li>' . $error . '</li>';
+            }
+            ?>
+        </ul>
+    <?php endif ?>
+    <form id="formular" action="/m307_2/01_videothek/uebersicht/statusaendern" method="post">
+    <button type="submit" name="form-submit">Status auf zurückgegeben ändern</button>
+        <br><br>
         <?php foreach($result as $loan) : ?>
-            <li>
-                <?= e($loan['name']) . " | " . e($loan['fk_movieid']) . " | Zur&uumlck Erwartet am: " .  e(date_format($loan['expectedReturn'],"d-m-Y")) . (($loan['expectedReturn'] < $now) ? '😠' : '😁' . ' | ')?>
-                <a href="/m307_2/01_videothek/uebersicht/bearbeiten?id=<?= $loan['id'] ?>"> bearbeiten </a>
-            </li>
+            <input type="checkbox" name="loans[]" value="<?= $loan['id'] ?>" id="<?= $loan['id'] ?>">
+            <label for="<?= $loan['id'] ?>"><?= e($loan['name']) . " | " . e($loan['fk_movieid']) . " | Zur&uumlck Erwartet am: " .  e(date_format($loan['expectedReturn'],"d-m-Y")) . (($loan['expectedReturn'] < $now) ? '😠' : '😁' . ' | ')?></label>
+            <a href="/m307_2/01_videothek/uebersicht/bearbeiten?id=<?= $loan['id'] ?>"> bearbeiten </a><br>
         <?php endforeach; ?>
-    </ul>
+    </form>
 </body>
 </html>
