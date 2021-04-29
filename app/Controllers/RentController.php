@@ -18,14 +18,14 @@ class RentController {
             $name         = $_POST['name']     ?? '';
             $email        = $_POST['email']    ?? '';
             $telephone    = $_POST['telephone']    ?? '';
-            $membership   = $_POST['membership']    ?? '';
+            $selectedMembership   = $_POST['membership']    ?? '';
             $movie        = $_POST['movie']    ?? '';
             $date         = date("Y.m.d");
 
             $name         = trim($name);
             $email        = trim($email);
             $telephone    = trim($telephone);
-            $membership   = trim($membership);
+            $selectedMembership   = trim($selectedMembership);
             $movie        = trim($movie);
             $date         = trim($date);
 
@@ -48,7 +48,7 @@ class RentController {
             }
 
 
-           if($membership === ''){
+           if($selectedMembership === ''){
                 $errors[] = 'Bitte wählen Sie einen Mitgliedschaftsstatus aus';
             }
 
@@ -59,7 +59,7 @@ class RentController {
             if(count($errors) !== 0){
                 require 'app/Views/rent.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $telephone, $movie, $membership, $date);
+                $loan = new Loan($name, $email, $telephone, $movie, $selectedMembership, $date);
                 $loan->create();
             }
 

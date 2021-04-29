@@ -27,15 +27,15 @@
             <legend class="form-legend">Personendaten</legend> <br>
             <div class="form-group">
                 <label class="form-label" for="name">*Name:</label> <br>
-                <input class="form-control" type="text" id="name" name="name"  value="<?= $name ?? '' ?>"> <br> <br>
+                <input class="form-control" type="text" id="name" name="name"  value="<?= isset($name) ? e($name) : '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">*Email:</label> <br>
-                <input class="form-control" type="email" id="email" name="email" value="<?= $email ?? '' ?>"> <br> <br>
+                <input class="form-control" type="email" id="email" name="email" value="<?= isset($email) ? e($email) : '' ?>"> <br> <br>
             </div>
             <div class="form-group">
                 <label class="form-label" for="telephone">Telefon:</label> <br>
-                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= $telephone ?? '' ?>"> <br> <br>
+                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= isset($telephone) ? e($telephone) : '' ?>"> <br> <br>
             </div>
     </fieldset>
 ​
@@ -45,8 +45,8 @@
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
                 <select onchange="calcExpectedDate()" class="form-control" id="membership" name="membership">
                     <?php foreach($memberships as $membership) : ?>
-                        <option value="<?= $membership['id'] ?>">
-                            <?= $membership['title'] ?>
+                        <option <?= isset($selectedMembership) ? ($selectedMembership === $membership['id'] ? 'selected' : '') : '' ?> value="<?= e($membership['id'])?>">
+                            <?= e($membership['title']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select> <br> <br>
@@ -54,8 +54,8 @@
             <label class="form-label" for="movie">*Ausgeleihtes Video:</label> <br>
                 <select class="form-control" id="movie" name="movie">
                     <?php foreach($movies as $movie) : ?>
-                        <option value="<?= $movie['id'] ?>">
-                            <?= $movie['title'] ?>
+                        <option value="<?= e($movie['id']) ?>">
+                            <?= e($movie['title']) ?>
                         </option> 
                     <?php endforeach; ?>
                 </select>
@@ -63,7 +63,7 @@
         <label class="form-label" for="expectedDate">Zurückerwartet bis am:</label> <br>
         <input disabled type="text" id="expectedDate" name="expectedDate" value="" val><br><br>
         <button type="submit" name="form-submit">Ausleihen</button>
-        <script src="public/js/rent.js"></script>
+        <script src="/m307_2/01_videothek/public/js/rent.js" type="text/javascript"></script>
     </form>
 </body>
 </html>
