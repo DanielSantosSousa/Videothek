@@ -17,14 +17,14 @@ class RentController {
 
             $name         = $_POST['name']     ?? '';
             $email        = $_POST['email']    ?? '';
-            $phone        = $_POST['phone']    ?? '';
+            $telephone        = $_POST['telephone']    ?? '';
             $membership   = $_POST['membership']    ?? '';
             $movie        = $_POST['movie']    ?? '';
             $date         = date("Y.m.d");
 
             $name         = trim($name);
             $email        = trim($email);
-            $phone        = trim($phone);
+            $telephone        = trim($telephone);
             $membership   = trim($membership);
             $movie        = trim($movie);
             $date         = trim($date);
@@ -41,8 +41,8 @@ class RentController {
                 $errors[] = 'Bitte geben Sie eine gültige Email-Adress ein';
             }
 
-            if ($phone !== '') {
-                if(! preg_match('/^[\+ 0-9]+$/', $phone)){
+            if ($telephone !== '') {
+                if(! preg_match('/^[\+ 0-9]+$/', $telephone)){
                     $errors[] = 'Bitte geben Sie eine gültige Telefonnummer ein';
                 }
             }
@@ -58,7 +58,7 @@ class RentController {
             if(count($errors) !== 0){
                 require 'app/Views/rent.view.php';
             } elseif(count($errors) === 0) {
-                $loan = new Loan($name, $email, $phone, $movie, $membership, $date);
+                $loan = new Loan($name, $email, $telephone, $movie, $membership, $date);
                 $loan->create();
             }
 

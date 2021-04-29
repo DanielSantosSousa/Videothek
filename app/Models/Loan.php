@@ -5,18 +5,18 @@ class loan
 	public $id;
 	public $name;
 	public $email;
-	public $phone;
+	public $telephone;
 	public $date;
 	public $movie;
 	public $membership;
     public $pdo;
 
-    public function __construct($name = null, $email = null, $phone = null, $movie = null, $membership = null, $date = null)
+    public function __construct($name = null, $email = null, $telephone = null, $movie = null, $membership = null, $date = null)
     {
         $this->pdo = db();
         $this->name = $name;
         $this->email = $email;
-        $this->telephone = $phone;
+        $this->telephone = $telephone;
         $this->movie = $movie;
         $this->membership = $membership;
         $this->date = $date;
@@ -57,7 +57,7 @@ class loan
         //dd($this);
         $statement->bindParam(':name', $this->name);
         $statement->bindParam(':email', $this->email);
-        $statement->bindParam(':telephone', $this->phone);
+        $statement->bindParam(':telephone', $this->telephone);
         $statement->bindParam(':movie', $this->movie);
         $statement->bindParam(':membership', $this->membership);
         $statement->bindParam(':date', $this->date);
