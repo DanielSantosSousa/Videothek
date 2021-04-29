@@ -43,7 +43,7 @@
             <legend class="form-legend">Ausleihdaten</legend> <br>
 
             <label class="form-label" for="membership">*Mitgliederstatus</label> <br>
-                <select class="form-control" id="membership" name="membership">
+                <select onchange="calcExpectedDate()" class="form-control" id="membership" name="membership">
                     <?php foreach($memberships as $membership) : ?>
                         <option value="<?= $membership['id'] ?>">
                             <?= $membership['title'] ?>
@@ -59,11 +59,11 @@
                         </option> 
                     <?php endforeach; ?>
                 </select>
-                
         </fieldset> <br>
-
+        <label class="form-label" for="expectedDate">Zurückerwartet bis am:</label> <br>
+        <input disabled type="text" id="expectedDate" name="expectedDate" value="" val><br><br>
         <button type="submit" name="form-submit">Ausleihen</button>
-
+        <script src="public/js/rent.js"></script>
     </form>
 </body>
 </html>
