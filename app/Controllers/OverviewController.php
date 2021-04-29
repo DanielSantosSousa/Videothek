@@ -14,7 +14,7 @@ class OverviewController{
         $returned = $loan->returned;
         $name = $loan->name;
         $email = $loan->email;
-        $phone = $loan->phone;
+        $phone = $loan->phone ?? '';
         $membership = $loan->membership;
         $video = $loan->movie;
         $movies = Movie::getAllOrderedByTitle();
