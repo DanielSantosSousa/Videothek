@@ -14,9 +14,9 @@ class OverviewController{
         $returned = $loan->returned;
         $name = $loan->name;
         $email = $loan->email;
-        $phone = $loan->phone;
+        $telephone = $loan->telephone ?? '';
         $membership = $loan->membership;
-        $video = $loan->movie;
+        $movie = $loan->movie;
         $movies = Movie::getAllOrderedByTitle();
         require 'app/Views/edit.view.php';
     }

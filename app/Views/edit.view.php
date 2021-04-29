@@ -35,8 +35,8 @@
                 <input class="form-control" type="email" id="email" name="email" value="<?= e($email) ?? '' ?>"> <br> <br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="phone">Telefon:</label> <br>
-                <input class="form-control" type="text" id="phone" name="phone" value="<?= e($phone) ?? '' ?>"> <br> <br>
+                <label class="form-label" for="telephone">Telefon:</label> <br>
+                <input class="form-control" type="text" id="telephone" name="telephone" value="<?= e($telephone) ?? '' ?>"> <br> <br>
             </div>
     </fieldset>
 
@@ -51,10 +51,10 @@
                 </select> <br> <br>
 
             <label class="form-label" for="video">*Ausgeleihtes Video:</label> <br>
-                <select class="form-control" id="video" name="video">
-                    <?php foreach($movies as $movie) : ?>
-                        <option <?= (($video === $movie['title'] || $video === $movie['id']) ? 'selected' : '') ?> value="<?= $movie['id'] ?>">
-                            <?= $movie['title'] ?>
+                <select class="form-control" id="movie" name="movie">
+                    <?php foreach($movies as $aMovie) : ?>
+                        <option <?= (($movie === $aMovie['title'] || $movie === $aMovie['id']) ? 'selected' : '') ?> value="<?= $aMovie['id'] ?>">
+                            <?= $aMovie['title'] ?>
                         </option>
                     <?php endforeach; ?>
                 </select><br><br>
