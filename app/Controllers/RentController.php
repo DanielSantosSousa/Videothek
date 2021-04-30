@@ -23,7 +23,7 @@ class RentController {
             $name                 = $_POST['name']     ?? '';
             $email                = $_POST['email']    ?? '';
             $telephone            = $_POST['telephone']    ?? '';
-            $errors               = validateInput($name,$email,$telephone,$movie);
+            $errors               = validateInput($name,$email,$telephone,$selectedMovie);
 
             $selectedMembership = trim($selectedMembership);
 
@@ -37,6 +37,7 @@ class RentController {
                 try {
                     $loan = new Loan($name, $email, $telephone, $selectedMovie, $selectedMembership, $date);
                     $loan->create();
+                    header('Location: /m307_2/01_videothek/');
                 } catch (PDOException $e){
                     $errors[] = "Fehler beim speichern in die Datenbank, versuchen sie es erneut";
                     $movies = Movie::getAllOrderedByTitle();
